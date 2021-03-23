@@ -1,4 +1,5 @@
 import { useState } from "react";
+import seriePrueba from "../series.json";
 
 const Formulario = () => {
   const [listadoSeries, setlistadoSeries] = useState([]);
@@ -15,8 +16,11 @@ const Formulario = () => {
 
   const anyadePeli = e => {
     e.preventDefault();
-    if (!listadoSeries.includes(nuevoNombre)) {
+    if (!listadoSeries.includes(seriePrueba.Title)) {
+      setlistadoSeries([...listadoSeries, { seriePrueba }]);
     }
+    setNuevoAnyo("");
+    setNuevoNombre("");
   };
 
   return (
@@ -24,9 +28,9 @@ const Formulario = () => {
       <form className="col" onSubmit={anyadePeli}>
         <div className="form-group row align-items-center">
           <label htmlFor="nombre" className="col-2">Nombre: </label>
-          <input type="text" className="form-control col-6" id="nombre" onChange={escribe} />
+          <input type="text" className="form-control col-6" id="nombre" onChange={escribe} value={nuevoNombre} />
           <label htmlFor="anyo" className="col-1">Año: </label>
-          <input type="number" className="form-control col" id="anyo" onChange={escribe} />
+          <input type="number" className="form-control col" id="anyo" onChange={escribe} value={nuevoAnyo} />
         </div>
         <div className="form-group row align-items-center">
           <label htmlFor="plataforma" className="col-2">Plataforma: </label>
