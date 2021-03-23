@@ -1,4 +1,5 @@
 import { useState } from "react";
+import seriePrueba from "../series.json";
 
 const Formulario = () => {
   const [listadoSeries, setlistadoSeries] = useState([]);
@@ -15,7 +16,8 @@ const Formulario = () => {
 
   const anyadePeli = e => {
     e.preventDefault();
-    if (!listadoSeries.includes(nuevoNombre)) {
+    if (!listadoSeries.includes(seriePrueba.Title)) {
+      setlistadoSeries([...listadoSeries, { seriePrueba }]);
     }
     setNuevoAnyo("");
     setNuevoNombre("");
